@@ -1,0 +1,29 @@
+# VCS generated files
+sim/simv
+sim/simv.daidir/
+sim/csrc/
+sim/simv.vdb/
+sim/urgReport/
+sim/*.log
+sim/*.vcd
+sim/ucli.key
+sim/vc_hdrs.h
+sim/.fsm.sch.verilog.xml
+sim/DVEfiles/
+
+# General simulation outputs
+*.vpd
+*.fsdb
+*.vcd
+*.key
+*.log
+
+# Synthesis temporary files
+synth/
+WORK/
+*.ddc
+*.sdc
+
+# Editor/system files
+.vscode/
+.DS_Store
