@@ -1,4 +1,4 @@
-Paste this full content into GitHub `README.md`:
+
 
 # AHB-to-APB Bridge Controller
 
@@ -25,9 +25,8 @@ AHB_APB/
 │   ├── ahb_apb_checker.sv
 │   └── top_tb.sv
 ├── sim/
-│   └── vcs_filelist.f
-└── docs/
-    └── CHANGES.md
+    └── vcs_filelist.f
+
 ```
 
 ## RTL Design
@@ -62,48 +61,10 @@ The testbench validates six directed scenarios:
 
 ## Running Simulation in Synopsys VCS
 
-Go to the simulation directory:
-
-```bash
-cd sim
-```
-
-Compile:
-
-```bash
-vcs -full64 -sverilog -timescale=1ns/1ps \
-  -debug_access+all \
-  +vcs+lic+wait \
-  -assert svaext \
-  -cm line+cond+fsm+tgl+branch+assert \
-  -cm_dir simv.vdb \
-  -l compile.log \
-  -f vcs_filelist.f \
-  -top top_tb \
-  -o simv
-```
-
-Run simulation:
-
-```bash
-./simv -cm line+cond+fsm+tgl+branch+assert -cm_dir simv.vdb -l sim.log
-```
-
-Generate coverage report:
-
-```bash
-urg -dir simv.vdb -report urgReport
-```
-
-Check results:
-
-```bash
-grep -E "ERROR|Fatal|protocol|Readback|PASS|FAIL|COV" sim.log
-```
 
 Expected result:
 
-```text
+```
 [PASS] Scenario 1: reset/idle completed
 [PASS] Scenario 2: single write to peripheral 0 completed
 [TB] Readback HRDATA = 0xdeadbeef
@@ -136,6 +97,6 @@ During verification, the following RTL and testbench issues were identified and 
 * Missing real APB peripheral model
 * AHB master BFM protocol violation where transfers advanced without respecting `HREADY`
 
-## Resume Summary
+## Summary
 
 Designed and verified an **AHB-to-APB bridge controller** in SystemVerilog with FSM-based APB control, address decoding, pipelined AHB signal handling, protocol assertions, and functional coverage. Built a self-checking VCS testbench that validated six transfer scenarios and achieved **97.92% functional coverage**.
